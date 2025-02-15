@@ -1,0 +1,15 @@
+version: "3"
+name: shadow-pos-api
+services:
+  db:
+    container_name: shadow-properties-db
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: shadowproperties
+      MONGO_INITDB_ROOT_USERNAME: koso
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+    volumes:
+      - ./bd-data:/data/db

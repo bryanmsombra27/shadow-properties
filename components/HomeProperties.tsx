@@ -2,10 +2,28 @@ import { FC } from "react";
 import properties from "@/data/properties.json";
 import PropertyCard from "./PropertyCard";
 import Link from "next/link";
+import connectDB from "@/config/db";
+import Property from "@/models/Property.model";
+import { Property as PropertyInterface } from "@/interfaces/property";
+
+const getProperties = async () => {
+  await connectDB();
+
+  // SE UTILIZA EL METODO LEAN PARA OBTENER LOS DATOS COMO OBJETOS DE LECTURA DE JS EVITANDO QUE SEAN OBJETOS DE MONGOOSE QUE NO SE PUEDEN MODIFICAR
+  const properties = await Property.find()
+    .sort({
+      createdAt: -1,
+    })
+    .limit(3);
+  // .lean();
+
+  return properties as PropertyInterface[];
+};
 
 interface HomePropertiesProps {}
-const HomeProperties: FC<HomePropertiesProps> = ({}) => {
-  const recentProperties = properties.slice(0, 3);
+const HomeProperties: FC<HomePropertiesProps> = async ({}) => {
+  // const recentProperties = properties.slice(0, 3);
+  const recentProperties = await getProperties();
 
   return (
     <>

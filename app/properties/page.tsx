@@ -1,9 +1,22 @@
 import { FC } from "react";
-import properties from "@/data/properties.json";
 import { PropertyCard } from "@/components";
+import connectDB from "@/config/db";
+import Property from "@/models/Property.model";
+import { Property as PropertyInterface } from "@/interfaces/property";
+
+const getProperties = async () => {
+  await connectDB();
+
+  // SE UTILIZA EL METODO LEAN PARA OBTENER LOS DATOS COMO OBJETOS DE LECTURA DE JS EVITANDO QUE SEAN OBJETOS DE MONGOOSE QUE NO SE PUEDEN MODIFICAR
+  const properties = (await Property.find()) as PropertyInterface[];
+
+  return properties;
+};
 
 interface pageProps {}
-const page: FC<pageProps> = ({}) => {
+const page: FC<pageProps> = async ({}) => {
+  const properties = await getProperties();
+
   return (
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto px-4 py-6">

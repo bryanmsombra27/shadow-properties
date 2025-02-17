@@ -1,4 +1,5 @@
 import { Property } from "@/interfaces/property";
+import { imagePath } from "@/utils/imagePath";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
@@ -30,7 +31,8 @@ const PropertyCard: FC<PropertyCardProps> = ({ property }) => {
     <>
       <div className="rounded-xl shadow-md relative">
         <Image
-          src={`/properties/${property.images[0]}`}
+          // src={`/properties/${property.images[0]}`}
+          src={imagePath(property.images[0])}
           width={0}
           height={0}
           sizes="100vw"

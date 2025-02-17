@@ -2,7 +2,11 @@ import connectDB from "@/config/db";
 import Property from "@/models/Property.model";
 import { FC } from "react";
 import { Property as PropertyInterface } from "@/interfaces/property";
-import { PropertyDetails, PropertyHeaderImage } from "@/components";
+import {
+  PropertyDetails,
+  PropertyHeaderImage,
+  PropertyImage,
+} from "@/components";
 import Link from "next/link";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 
@@ -47,6 +51,8 @@ const page: FC<pageProps> = async ({ params }) => {
           </div>
         </div>
       </section>
+
+      <PropertyImage images={property.images} />
     </>
   );
 };

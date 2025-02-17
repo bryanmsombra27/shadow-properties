@@ -8,3 +8,5 @@ export { default as PropertyCard } from "./PropertyCard";
 export { default as PropertyDetails } from "./PropertyDetails";
 export { default as PropertyHeaderImage } from "./PropertyHeaderImage";
 export { default as PropertyImage } from "./PropertyImage";
+export { default as ProfileProperties } from "./ProfileProperties";
+export { default as PropertyEditForm } from "./PropertyEditForm";

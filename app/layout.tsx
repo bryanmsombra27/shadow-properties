@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Footer, Navbar } from "@/components";
 import AuthProvider from "@/components/AuthProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Shadow Properties",
@@ -22,6 +24,7 @@ export default function RootLayout({
           <main>{children}</main>
 
           <Footer />
+          <ToastContainer />
         </body>
       </html>
     </AuthProvider>
